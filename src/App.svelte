@@ -1,28 +1,32 @@
 <script>
+  import { onDestroy, onMount } from "svelte";
   import logo from "./assets/svelte.png";
-  import Counter from "./lib/Counter.svelte";
+  import Board from "./lib/Board.svelte";
+  onMount(() => {
+    console.log("hi");
+  });
+  onDestroy(() => {
+    console.log("bye");
+  });
 </script>
 
-<main class="pattern-grid-lg text-green-500 bg-black min-h-screen">
-  <img src={logo} alt="Svelte Logo" />
-  <div class="m-24 p-6 lg:p-12 bg-green-900 pattern-grid-sm">
-	  <div class="text-white">
-	  	<h1 class="text-[64px] lg:text-[200px]">Hell world!</h1>
-	  	<Counter />
-	  	<p>
-	  			Visit <a href="https://svelte.dev">svelte.dev</a> to learn how to build Svelte
-	  			apps.
-	  	</p>
-	  	<p>
-	  			Check out <a href="https://github.com/sveltejs/kit#readme">SvelteKit</a> for
-	  			the officially supported framework, also powered by Vite!
-	  	</p>
-	  </div>
+<main class="pattern-grid-xl text-green-500 bg-black min-h-screen">
+  <div class="flex">
+    <img class="h-32 w-32 hidden md:block" src={logo} alt="Svelte Logo" />
+    <div class="mx-auto md:mx-4 p-6 bg-green-900 pattern-grid-sm">
+      <h1 class="text-[64px] font-light text-white">Zentiles</h1>
+    </div>
+  </div>
+  <div class="" />
+  <div class="m-6 md:m-24 p-6 lg:p-12 bg-green-900 pattern-grid-sm">
+    <div class="text-white">
+      <Board />
+    </div>
   </div>
 </main>
 
 <style lang="postcss">
-	@import '../node_modules/pattern.css/dist/pattern.min.css';
+  @import "../node_modules/pattern.css/dist/pattern.min.css";
   @tailwind base;
   @tailwind components;
   @tailwind utilities;
@@ -33,36 +37,7 @@
 
   main {
     text-align: center;
-    padding: 1em;
+    padding: 2em;
     margin: 0 auto;
-  }
-
-  img {
-    height: 16rem;
-    width: 16rem;
-  }
-
-  h1 {
-    text-transform: uppercase;
-    font-weight: 100;
-    line-height: 1.1;
-    margin: 2rem auto;
-    max-width: 14rem;
-  }
-
-  p {
-    max-width: 14rem;
-    margin: 1rem auto;
-    line-height: 1.35;
-  }
-
-  @media (min-width: 480px) {
-    h1 {
-      max-width: none;
-    }
-
-    p {
-      max-width: none;
-    }
   }
 </style>
